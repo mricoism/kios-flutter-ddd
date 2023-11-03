@@ -1,0 +1,11 @@
+
+
+berguna untuk komunikasi dengan API atau Local DataBase
+
+Berisikan :
+
+Repositories
+
+Data Transfer object
+
+dan konversi exceptions melalui repositories menjadi failures

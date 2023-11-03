@@ -1,0 +1,9 @@
+
+
+Berisikan :
+
+Validated value object / Logic
+
+Entities
+
+Failure
