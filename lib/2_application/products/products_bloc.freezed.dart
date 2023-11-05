@@ -168,6 +168,8 @@ abstract class _Started implements ProductsEvent {
 mixin _$ProductsState {
   bool get isLoading => throw _privateConstructorUsedError;
   List<ProductItem> get item => throw _privateConstructorUsedError;
+  Option<Either<ProductFailure, List<ProductItem>>>
+      get optionFailureOrSuccess => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $ProductsStateCopyWith<ProductsState> get copyWith =>
@@ -180,7 +182,11 @@ abstract class $ProductsStateCopyWith<$Res> {
           ProductsState value, $Res Function(ProductsState) then) =
       _$ProductsStateCopyWithImpl<$Res, ProductsState>;
   @useResult
-  $Res call({bool isLoading, List<ProductItem> item});
+  $Res call(
+      {bool isLoading,
+      List<ProductItem> item,
+      Option<Either<ProductFailure, List<ProductItem>>>
+          optionFailureOrSuccess});
 }
 
 /// @nodoc
@@ -198,6 +204,7 @@ class _$ProductsStateCopyWithImpl<$Res, $Val extends ProductsState>
   $Res call({
     Object? isLoading = null,
     Object? item = null,
+    Object? optionFailureOrSuccess = null,
   }) {
     return _then(_value.copyWith(
       isLoading: null == isLoading
@@ -208,6 +215,10 @@ class _$ProductsStateCopyWithImpl<$Res, $Val extends ProductsState>
           ? _value.item
           : item // ignore: cast_nullable_to_non_nullable
               as List<ProductItem>,
+      optionFailureOrSuccess: null == optionFailureOrSuccess
+          ? _value.optionFailureOrSuccess
+          : optionFailureOrSuccess // ignore: cast_nullable_to_non_nullable
+              as Option<Either<ProductFailure, List<ProductItem>>>,
     ) as $Val);
   }
 }
@@ -220,7 +231,11 @@ abstract class _$$ProductsStateImplCopyWith<$Res>
       __$$ProductsStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({bool isLoading, List<ProductItem> item});
+  $Res call(
+      {bool isLoading,
+      List<ProductItem> item,
+      Option<Either<ProductFailure, List<ProductItem>>>
+          optionFailureOrSuccess});
 }
 
 /// @nodoc
@@ -236,6 +251,7 @@ class __$$ProductsStateImplCopyWithImpl<$Res>
   $Res call({
     Object? isLoading = null,
     Object? item = null,
+    Object? optionFailureOrSuccess = null,
   }) {
     return _then(_$ProductsStateImpl(
       isLoading: null == isLoading
@@ -246,6 +262,10 @@ class __$$ProductsStateImplCopyWithImpl<$Res>
           ? _value._item
           : item // ignore: cast_nullable_to_non_nullable
               as List<ProductItem>,
+      optionFailureOrSuccess: null == optionFailureOrSuccess
+          ? _value.optionFailureOrSuccess
+          : optionFailureOrSuccess // ignore: cast_nullable_to_non_nullable
+              as Option<Either<ProductFailure, List<ProductItem>>>,
     ));
   }
 }
@@ -254,7 +274,9 @@ class __$$ProductsStateImplCopyWithImpl<$Res>
 
 class _$ProductsStateImpl implements _ProductsState {
   const _$ProductsStateImpl(
-      {required this.isLoading, required final List<ProductItem> item})
+      {required this.isLoading,
+      required final List<ProductItem> item,
+      required this.optionFailureOrSuccess})
       : _item = item;
 
   @override
@@ -268,8 +290,12 @@ class _$ProductsStateImpl implements _ProductsState {
   }
 
   @override
+  final Option<Either<ProductFailure, List<ProductItem>>>
+      optionFailureOrSuccess;
+
+  @override
   String toString() {
-    return 'ProductsState(isLoading: $isLoading, item: $item)';
+    return 'ProductsState(isLoading: $isLoading, item: $item, optionFailureOrSuccess: $optionFailureOrSuccess)';
   }
 
   @override
@@ -279,12 +305,14 @@ class _$ProductsStateImpl implements _ProductsState {
             other is _$ProductsStateImpl &&
             (identical(other.isLoading, isLoading) ||
                 other.isLoading == isLoading) &&
-            const DeepCollectionEquality().equals(other._item, _item));
+            const DeepCollectionEquality().equals(other._item, _item) &&
+            (identical(other.optionFailureOrSuccess, optionFailureOrSuccess) ||
+                other.optionFailureOrSuccess == optionFailureOrSuccess));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, isLoading, const DeepCollectionEquality().hash(_item));
+  int get hashCode => Object.hash(runtimeType, isLoading,
+      const DeepCollectionEquality().hash(_item), optionFailureOrSuccess);
 
   @JsonKey(ignore: true)
   @override
@@ -296,12 +324,16 @@ class _$ProductsStateImpl implements _ProductsState {
 abstract class _ProductsState implements ProductsState {
   const factory _ProductsState(
       {required final bool isLoading,
-      required final List<ProductItem> item}) = _$ProductsStateImpl;
+      required final List<ProductItem> item,
+      required final Option<Either<ProductFailure, List<ProductItem>>>
+          optionFailureOrSuccess}) = _$ProductsStateImpl;
 
   @override
   bool get isLoading;
   @override
   List<ProductItem> get item;
+  @override
+  Option<Either<ProductFailure, List<ProductItem>>> get optionFailureOrSuccess;
   @override
   @JsonKey(ignore: true)
   _$$ProductsStateImplCopyWith<_$ProductsStateImpl> get copyWith =>

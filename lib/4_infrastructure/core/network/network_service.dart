@@ -2,7 +2,7 @@
 import 'dart:convert';
 
 import 'package:fpdart/src/either.dart';
-import 'package:kios/4_infrastructure/core/exceptions/server_exceptions.dart';
+import 'package:kios/3_domain/core/exceptions/server_exceptions.dart';
 import 'package:kios/4_infrastructure/core/network/i_network_service.dart';
 import 'package:http/http.dart' as http;
 
