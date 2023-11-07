@@ -19,32 +19,38 @@ mixin _$ProductsEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
+    required TResult Function() nextPage,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
+    TResult? Function()? nextPage,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
+    TResult Function()? nextPage,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
+    required TResult Function(_NextPage value) nextPage,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
+    TResult? Function(_NextPage value)? nextPage,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
+    TResult Function(_NextPage value)? nextPage,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -86,12 +92,18 @@ class __$$StartedImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$StartedImpl implements _Started {
+class _$StartedImpl with DiagnosticableTreeMixin implements _Started {
   const _$StartedImpl();
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'ProductsEvent.started()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties.add(DiagnosticsProperty('type', 'ProductsEvent.started'));
   }
 
   @override
@@ -107,6 +119,7 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
+    required TResult Function() nextPage,
   }) {
     return started();
   }
@@ -115,6 +128,7 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
+    TResult? Function()? nextPage,
   }) {
     return started?.call();
   }
@@ -123,6 +137,7 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
+    TResult Function()? nextPage,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -135,6 +150,7 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
+    required TResult Function(_NextPage value) nextPage,
   }) {
     return started(this);
   }
@@ -143,6 +159,7 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
+    TResult? Function(_NextPage value)? nextPage,
   }) {
     return started?.call(this);
   }
@@ -151,6 +168,7 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
+    TResult Function(_NextPage value)? nextPage,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -162,6 +180,114 @@ class _$StartedImpl implements _Started {
 
 abstract class _Started implements ProductsEvent {
   const factory _Started() = _$StartedImpl;
+}
+
+/// @nodoc
+abstract class _$$NextPageImplCopyWith<$Res> {
+  factory _$$NextPageImplCopyWith(
+          _$NextPageImpl value, $Res Function(_$NextPageImpl) then) =
+      __$$NextPageImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$NextPageImplCopyWithImpl<$Res>
+    extends _$ProductsEventCopyWithImpl<$Res, _$NextPageImpl>
+    implements _$$NextPageImplCopyWith<$Res> {
+  __$$NextPageImplCopyWithImpl(
+      _$NextPageImpl _value, $Res Function(_$NextPageImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$NextPageImpl with DiagnosticableTreeMixin implements _NextPage {
+  const _$NextPageImpl();
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'ProductsEvent.nextPage()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties.add(DiagnosticsProperty('type', 'ProductsEvent.nextPage'));
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$NextPageImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() started,
+    required TResult Function() nextPage,
+  }) {
+    return nextPage();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? started,
+    TResult? Function()? nextPage,
+  }) {
+    return nextPage?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function()? nextPage,
+    required TResult orElse(),
+  }) {
+    if (nextPage != null) {
+      return nextPage();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Started value) started,
+    required TResult Function(_NextPage value) nextPage,
+  }) {
+    return nextPage(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Started value)? started,
+    TResult? Function(_NextPage value)? nextPage,
+  }) {
+    return nextPage?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(_NextPage value)? nextPage,
+    required TResult orElse(),
+  }) {
+    if (nextPage != null) {
+      return nextPage(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _NextPage implements ProductsEvent {
+  const factory _NextPage() = _$NextPageImpl;
 }
 
 /// @nodoc
@@ -272,7 +398,9 @@ class __$$ProductsStateImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$ProductsStateImpl implements _ProductsState {
+class _$ProductsStateImpl
+    with DiagnosticableTreeMixin
+    implements _ProductsState {
   const _$ProductsStateImpl(
       {required this.isLoading,
       required final List<ProductItem> item,
@@ -294,8 +422,19 @@ class _$ProductsStateImpl implements _ProductsState {
       optionFailureOrSuccess;
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'ProductsState(isLoading: $isLoading, item: $item, optionFailureOrSuccess: $optionFailureOrSuccess)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'ProductsState'))
+      ..add(DiagnosticsProperty('isLoading', isLoading))
+      ..add(DiagnosticsProperty('item', item))
+      ..add(DiagnosticsProperty(
+          'optionFailureOrSuccess', optionFailureOrSuccess));
   }
 
   @override

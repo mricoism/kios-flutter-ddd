@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:kios/1_presentation/pages/detail_product/detail_product_page.dart';
 import 'package:kios/1_presentation/pages/products/product_page.dart';
 
 void main() async {
@@ -10,9 +12,29 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+      statusBarColor: Colors.black,
+      statusBarBrightness: Brightness.light,
+    ));
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
       home: ProductWrapperPage(),
+      // onGenerateRoute: (RouteSettings settings) {
+      //   final argument = settings.arguments;
+      //   switch (settings.name) {
+      //     case '/productPage':
+      //       return const ProductWrapperPage();
+      //       // break;
+      //       case '/detailProduct':
+      //       return DetailProductPage(productItem: argument);
+      //     default:
+      //       return null;
+      //   }
+      // },
+      // routes: <String, WidgetBuilder> {
+      //   '/productPage': (BuildContext context) => const ProductWrapperPage(),
+      //   '/detailProduct': (BuildContext context) => const DetailProductPage()
+      // },
     );
   }
 }

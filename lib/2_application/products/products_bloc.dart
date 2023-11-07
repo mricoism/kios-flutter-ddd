@@ -1,4 +1,5 @@
 import 'package:bloc/bloc.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:fpdart/fpdart.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -30,7 +31,7 @@ class ProductsBloc extends Bloc<ProductsEvent, ProductsState> {
         emit(state.copyWith(isLoading: true));
         final Either<ProductFailure, List<ProductItem>> failureOrProduct = await productRepository.getProductData();
         //List<ProductItem> items = state.item; // in this case not really needed
-        Either<ProductFailure,  List<ProductItem>> either = failureOrProduct.match((l) => left(l), (r) => right(r));
+        Either<ProductFailure, List<ProductItem>> either = failureOrProduct.match((l) => left(l), (r) => right(r));
         debugPrint('flow productBloc after get productRepository.getProductData() )');
         failureOrProduct.fold((_) {
           debugPrint('flow productBloc fail to get data');
@@ -40,7 +41,9 @@ class ProductsBloc extends Bloc<ProductsEvent, ProductsState> {
         });
         debugPrint('flow productBloc END');
         // print('RESULTS:  $failureOrProduct');
-      },);
+      }, nextPage: () { 
+        
+       },);
 
 
 

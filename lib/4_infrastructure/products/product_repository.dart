@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:fpdart/src/either.dart';
 // import 'package:injectable/injectable.dart';
 import 'package:kios/3_domain/products/i_product_repository.dart';
@@ -14,19 +15,22 @@ class ProductRepository implements IProductRepository {
 
   @override
   Future<Either<ProductFailure, List<ProductItem>>> getProductData() async {
-    print('RIKO YAY');
-    var response = await _networkService.getHttp(path: '?limit=5');
+    debugPrint('flow ProductRepository START');
+    var response = await _networkService.getHttp(path: '?limit=10');
 
     return response.match((l) {
       return left(const ProductFailure.failed());
     }, (r) {
-      print('\n NARUTO: $r');
+      debugPrint('flow ProductRepository has response');
       List datas = r as List;
       if (datas.isNotEmpty) {
         List<ProductItem> items =
             List<ProductItem>.from(datas.map((e) => ProductItem.fromJson(e)));
+             debugPrint('flow ProductRepository Success to maaping json into list ProductItem'); 
+        debugPrint('flow ProductRepository END'); 
         return right(items);
       }
+      debugPrint('flow ProductRepository Fail to maaping json into list ProductItem'); 
       return left(const ProductFailure.failed());
     });
   }
