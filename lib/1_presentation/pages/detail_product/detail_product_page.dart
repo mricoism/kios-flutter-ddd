@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:kios/1_presentation/widgets/custom_button.dart';
+import 'package:kios/1_presentation/widgets/component/custom_button.dart';
 import 'package:kios/2_application/detail_product/detail_product_bloc.dart';
 import 'package:kios/4_infrastructure/products/product_item.dart';
 
@@ -22,14 +22,14 @@ class DetailProductPage extends StatelessWidget {
                 //screen
                 child: SingleChildScrollView(
               child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 24),
+                padding: const EdgeInsets.fromLTRB(24, 10, 24, 0),
                 child: Column(
                   // mainAxisAlignment: MainAxisAlignment.center,
                   // crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Container(
                       height: 60,
-                      color: Colors.white,
+                      // color: Colors.grey,
                       child: Row(
                         children: [
                           CustomButton(
@@ -56,14 +56,20 @@ class DetailProductPage extends StatelessWidget {
                         ],
                       ),
                     ),
+                    SizedBox(
+                      height: 10,
+                    ),
                     Container(
-                      color: Colors.white,
+                      // color: Colors.grey,
+                      decoration: BoxDecoration(
+                        // color: Colors.grey,
+                        borderRadius: BorderRadius.circular(20)
+                      ),
                       child: Center(
                           child: Container(
                         height: 400,
                         width: 400,
-                        color: Colors.white,
-                        child: Image.network(productItem.image),
+                        child: FadeInImage(placeholder: AssetImage('assets/no_image_two.jpg'), image: NetworkImage(productItem.image)),
                       )),
                     ),
                     SizedBox(

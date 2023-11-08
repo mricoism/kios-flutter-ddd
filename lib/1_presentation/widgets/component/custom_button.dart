@@ -25,7 +25,7 @@ class CustomButton extends StatelessWidget {
           onTap: onTap,
           splashColor: Colors.white,
           customBorder:
-              CircleBorder(), // ketika di rekan akan berbentuk circle efeknya
+              const CircleBorder(), // ketika di rekan akan berbentuk circle efeknya
           child: Icon(
             icon,
             color: color,
