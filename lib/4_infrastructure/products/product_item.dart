@@ -13,6 +13,7 @@ class ProductItem with _$ProductItem {
     required String title,
     required double price,
     required String description,
+    required String category,
     required String image,
   }) = _ProductItem;
 

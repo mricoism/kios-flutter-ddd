@@ -12,7 +12,7 @@ class DetailProductRepository implements IDetailProductRepository {
   @override
   Future<Either<DetailProductFailure, ProductItem>> getDetailProduct(
       int idy) async {
-    debugPrint('flow DetailProductRepository START');
+    debugPrint('\nflow DetailProductRepository START');
 
     var response = await _networkService.getHttp(path: '/$idy');
 
@@ -23,7 +23,7 @@ class DetailProductRepository implements IDetailProductRepository {
       var data = r;
       if (data.isNotEmpty) {
         ProductItem item =
-            ProductItem.fromJson(data );
+            ProductItem.fromJson(data);
         debugPrint(
             'flow DetailProductRepository Success to maaping json into list ProductItem');
         debugPrint('flow DetailProductRepository END');

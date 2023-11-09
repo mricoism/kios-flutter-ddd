@@ -1,13 +1,13 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'product_item.dart';
+part of 'category_item.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$ProductItemImpl _$$ProductItemImplFromJson(Map<String, dynamic> json) =>
-    _$ProductItemImpl(
+_$CategoryItemImpl _$$CategoryItemImplFromJson(Map<String, dynamic> json) =>
+    _$CategoryItemImpl(
       idy: json['id'] as int,
       title: json['title'] as String,
       price: (json['price'] as num).toDouble(),
@@ -16,7 +16,7 @@ _$ProductItemImpl _$$ProductItemImplFromJson(Map<String, dynamic> json) =>
       image: json['image'] as String,
     );
 
-Map<String, dynamic> _$$ProductItemImplToJson(_$ProductItemImpl instance) =>
+Map<String, dynamic> _$$CategoryItemImplToJson(_$CategoryItemImpl instance) =>
     <String, dynamic>{
       'id': instance.idy,
       'title': instance.title,

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:kios/1_presentation/pages/category/releated_product_by_category.dart';
 import 'package:kios/1_presentation/widgets/component/custom_button.dart';
 import 'package:kios/2_application/detail_product/detail_product_bloc.dart';
 import 'package:kios/4_infrastructure/products/product_item.dart';
@@ -72,47 +73,43 @@ class DetailProductPage extends StatelessWidget {
                         child: FadeInImage(placeholder: AssetImage('assets/no_image_two.jpg'), image: NetworkImage(productItem.image)),
                       )),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 50,
                     ),
                     Container(
                         alignment: Alignment.centerLeft,
                         child: Text(
                           productItem.title,
-                          style: TextStyle(
+                          style: const TextStyle(
                               fontWeight: FontWeight.bold, fontSize: 24),
                           textAlign: TextAlign.left,
                         )),
-                    SizedBox(
+                    const SizedBox(
                       height: 24,
                     ),
                     Text(
                       productItem.description,
                       style: TextStyle(fontSize: 16),
                     ),
-                    // Container(
-                    //   color: Colors.amber,
-                    //   child: Center(
-                    //       child: Container(
-                    //     height: 400,
-                    //     width: 400,
-                    //     color: Colors.cyan,
-                    //     child: Image.network(productItem.image),
-                    //   )),
-                    // ),
-                    // SizedBox(
-                    //   height: 50,
-                    // ),
-                    // Container(
-                    //   color: Colors.amber,
-                    //   child: Center(
-                    //       child: Container(
-                    //     height: 400,
-                    //     width: 400,
-                    //     color: Colors.cyan,
-                    //     child: Image.network(productItem.image),
-                    //   )),
-                    // ),
+                    const SizedBox(
+                      height: 30,
+                    ),
+                    Container(
+                      alignment: Alignment.centerLeft,
+                      child: const Text(
+                        'Related products :',
+                        style: TextStyle(
+                                fontWeight: FontWeight.bold, fontSize: 20),
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 24,
+                    ),
+
+                    RelatedProductByClass(productItem: productItem,),
+                    const SizedBox(
+                      height: 60,
+                    ),
                   ],
                 ),
               ),

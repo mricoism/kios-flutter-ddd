@@ -11,6 +11,7 @@ class ProductScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocConsumer<ProductsBloc, ProductsState>(
         builder: (BuildContext context, ProductsState state) {
+          debugPrint("hws c 7");
           return Scaffold(
             // appBar: AppBar(
             //   title: const Text('KIOS'),
@@ -74,7 +75,7 @@ class ProductScreen extends StatelessWidget {
                                                     boxShadow: const <BoxShadow>[
                                                       BoxShadow(
                                                           color: Colors.grey,
-                                                          offset: const Offset(
+                                                          offset: Offset(
                                                               0, 2),
                                                           blurRadius: 10.0)
                                                     ],
@@ -111,7 +112,7 @@ class ProductScreen extends StatelessWidget {
                                                                 .all(10),
                                                         child: Text(
                                                           item.title,
-                                                          style: TextStyle(
+                                                          style: const TextStyle(
                                                               fontSize: 16,
                                                               fontWeight:
                                                                   FontWeight
@@ -123,7 +124,7 @@ class ProductScreen extends StatelessWidget {
                                                       ),
                                                       Container(
                                                         padding:
-                                                            EdgeInsets.only(
+                                                            const EdgeInsets.only(
                                                                 left: 10),
                                                         alignment: Alignment
                                                             .centerLeft,
@@ -131,7 +132,7 @@ class ProductScreen extends StatelessWidget {
                                                           decoration:
                                                               BoxDecoration(
                                                             borderRadius:
-                                                                BorderRadius
+                                                                const BorderRadius
                                                                     .all(Radius
                                                                         .circular(
                                                                             8)),
@@ -144,7 +145,7 @@ class ProductScreen extends StatelessWidget {
                                                               fontSize: 12,
                                                             ),
                                                           ),
-                                                          padding: EdgeInsets
+                                                          padding: const EdgeInsets
                                                               .symmetric(
                                                                   vertical: 8,
                                                                   horizontal:
