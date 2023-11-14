@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:kios/1_presentation/pages/detail_product/detail_product_page.dart';
@@ -48,6 +49,8 @@ class ProductScreen extends StatelessWidget {
                                         itemCount: state.item.length,
                                         itemBuilder: (BuildContext ctx, index) {
                                           var item = state.item[index];
+                                          var image = item.images?[0] ?? '';
+                                          print('hws g $image');
                                           return GestureDetector(
                                             onTap: () {
                                               Navigator.push(
@@ -99,13 +102,21 @@ class ProductScreen extends StatelessWidget {
                                                             padding:
                                                                 const EdgeInsets
                                                                     .all(10),
-                                                            child: FadeInImage(
-                                                                placeholder:
-                                                                    const AssetImage(
-                                                                        'assets/no_image_two.jpg'),
-                                                                image: NetworkImage(
-                                                                    item.image)),
-                                                          )),
+                                                            child:  CachedNetworkImage(imageUrl: image, placeholder: (context, url) {
+                                                              return Image.asset('assets/no_image_two.jpg');
+                                                            },
+                                                            errorWidget: (context, url, error) {
+                                                              return Image.asset('assets/no_image_one.png');
+                                                            },
+                                                            ),
+                                                            // FadeInImage(
+                                                            //     placeholder:
+                                                            //         const AssetImage(
+                                                            //             'assets/no_image_two.jpg'),
+                                                            //     image: NetworkImage(
+                                                            //         item.image)),
+                                                          ))
+                                                          ,
                                                       Padding(
                                                         padding:
                                                             const EdgeInsets

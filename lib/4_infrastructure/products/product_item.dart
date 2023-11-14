@@ -13,8 +13,8 @@ class ProductItem with _$ProductItem {
     required String title,
     required double price,
     required String description,
-    required String category,
-    required String image,
+    // required String category,
+    required List<String>? images,
   }) = _ProductItem;
 
   factory ProductItem.fromJson(Map<String, dynamic> json) => _$ProductItemFromJson(json);

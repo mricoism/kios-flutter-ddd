@@ -16,16 +16,26 @@ class ProductRepository implements IProductRepository {
   @override
   Future<Either<ProductFailure, List<ProductItem>>> getProductData() async {
     debugPrint('flow ProductRepository START');
-    var response = await _networkService.getHttp(path: '?limit=10');
+    // var response = await _networkService.getHttp(path: '?limit=10');
+    var response = await _networkService.getHttp(path: '?offset=0&limit=10');
+    
 
     return response.match((l) {
       return left(const ProductFailure.failed());
     }, (r) {
       debugPrint('flow ProductRepository has response');
+      print('hws f $r');
       List datas = r as List;
+      print('\n\n');
+      print('hws f $datas');
+      
       if (datas.isNotEmpty) {
-        List<ProductItem> items =
+            List<ProductItem> items =
             List<ProductItem>.from(datas.map((e) => ProductItem.fromJson(e)));
+
+
+
+            
              debugPrint('flow ProductRepository Success to maaping json into list ProductItem'); 
         debugPrint('flow ProductRepository END'); 
         return right(items);

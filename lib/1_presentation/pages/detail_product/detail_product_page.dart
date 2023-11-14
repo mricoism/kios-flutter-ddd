@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:kios/1_presentation/pages/category/releated_product_by_category.dart';
@@ -63,14 +64,21 @@ class DetailProductPage extends StatelessWidget {
                     Container(
                       // color: Colors.grey,
                       decoration: BoxDecoration(
-                        // color: Colors.grey,
-                        borderRadius: BorderRadius.circular(20)
-                      ),
+                          // color: Colors.grey,
+                          borderRadius: BorderRadius.circular(20)),
                       child: Center(
                           child: Container(
                         height: 400,
                         width: 400,
-                        child: FadeInImage(placeholder: AssetImage('assets/no_image_two.jpg'), image: NetworkImage(productItem.image)),
+                        child: CachedNetworkImage(
+                          imageUrl: productItem.images?[0] ?? '',
+                          placeholder: (context, url) {
+                            return Image.asset('assets/no_image_two.jpg');
+                          },
+                          errorWidget: (context, url, error) {
+                            return Image.asset('assets/no_image_one.png');
+                          },
+                        ),
                       )),
                     ),
                     const SizedBox(
@@ -99,14 +107,15 @@ class DetailProductPage extends StatelessWidget {
                       child: const Text(
                         'Related products :',
                         style: TextStyle(
-                                fontWeight: FontWeight.bold, fontSize: 20),
+                            fontWeight: FontWeight.bold, fontSize: 20),
                       ),
                     ),
                     const SizedBox(
                       height: 24,
                     ),
-
-                    RelatedProductByClass(productItem: productItem,),
+                    RelatedProductByClass(
+                      productItem: productItem,
+                    ),
                     const SizedBox(
                       height: 60,
                     ),

@@ -12,7 +12,13 @@ import 'package:kios/4_infrastructure/products/product_item.dart';
 
 class CategoryRepository implements ICategoryRepository {
   final INetworkService _networkService = NetworkService();
-
+  
+  @override
+  Future<Either<CategoryFailure, List<CategoryItem>>> getCategory(ProductItem productItem) {
+    // TODO: implement getCategory
+    throw UnimplementedError();
+  }
+  /*
   @override
   Future<Either<CategoryFailure, List<CategoryItem>>> getCategory(ProductItem productItem) async {
     debugPrint('\nflow CategoryRepository START');
@@ -40,5 +46,5 @@ class CategoryRepository implements ICategoryRepository {
       }
     });
   }
-  
+  */
 }
