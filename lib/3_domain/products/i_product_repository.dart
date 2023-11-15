@@ -6,4 +6,6 @@ import 'package:kios/4_infrastructure/products/product_item.dart';
 
 abstract class IProductRepository {
   Future<Either<ProductFailure, List<ProductItem>>> getProductData(); 
+  Future<Either<ProductFailure, List<ProductItem>>> getProductDataWithOffset({required int offset}); 
+
 }

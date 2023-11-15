@@ -16,42 +16,43 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$CategoryEvent {
-  ProductItem get productItem => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(ProductItem productItem) started,
+    required TResult Function() nextPage,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(ProductItem productItem)? started,
+    TResult? Function()? nextPage,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(ProductItem productItem)? started,
+    TResult Function()? nextPage,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
+    required TResult Function(_NextPage value) nextPage,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
+    TResult? Function(_NextPage value)? nextPage,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
+    TResult Function(_NextPage value)? nextPage,
     required TResult orElse(),
   }) =>
-      throw _privateConstructorUsedError;
-
-  @JsonKey(ignore: true)
-  $CategoryEventCopyWith<CategoryEvent> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -60,10 +61,6 @@ abstract class $CategoryEventCopyWith<$Res> {
   factory $CategoryEventCopyWith(
           CategoryEvent value, $Res Function(CategoryEvent) then) =
       _$CategoryEventCopyWithImpl<$Res, CategoryEvent>;
-  @useResult
-  $Res call({ProductItem productItem});
-
-  $ProductItemCopyWith<$Res> get productItem;
 }
 
 /// @nodoc
@@ -75,40 +72,16 @@ class _$CategoryEventCopyWithImpl<$Res, $Val extends CategoryEvent>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? productItem = null,
-  }) {
-    return _then(_value.copyWith(
-      productItem: null == productItem
-          ? _value.productItem
-          : productItem // ignore: cast_nullable_to_non_nullable
-              as ProductItem,
-    ) as $Val);
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $ProductItemCopyWith<$Res> get productItem {
-    return $ProductItemCopyWith<$Res>(_value.productItem, (value) {
-      return _then(_value.copyWith(productItem: value) as $Val);
-    });
-  }
 }
 
 /// @nodoc
-abstract class _$$StartedImplCopyWith<$Res>
-    implements $CategoryEventCopyWith<$Res> {
+abstract class _$$StartedImplCopyWith<$Res> {
   factory _$$StartedImplCopyWith(
           _$StartedImpl value, $Res Function(_$StartedImpl) then) =
       __$$StartedImplCopyWithImpl<$Res>;
-  @override
   @useResult
   $Res call({ProductItem productItem});
 
-  @override
   $ProductItemCopyWith<$Res> get productItem;
 }
 
@@ -131,6 +104,14 @@ class __$$StartedImplCopyWithImpl<$Res>
           : productItem // ignore: cast_nullable_to_non_nullable
               as ProductItem,
     ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $ProductItemCopyWith<$Res> get productItem {
+    return $ProductItemCopyWith<$Res>(_value.productItem, (value) {
+      return _then(_value.copyWith(productItem: value));
+    });
   }
 }
 
@@ -169,6 +150,7 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(ProductItem productItem) started,
+    required TResult Function() nextPage,
   }) {
     return started(productItem);
   }
@@ -177,6 +159,7 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(ProductItem productItem)? started,
+    TResult? Function()? nextPage,
   }) {
     return started?.call(productItem);
   }
@@ -185,6 +168,7 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(ProductItem productItem)? started,
+    TResult Function()? nextPage,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -197,6 +181,7 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
+    required TResult Function(_NextPage value) nextPage,
   }) {
     return started(this);
   }
@@ -205,6 +190,7 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
+    TResult? Function(_NextPage value)? nextPage,
   }) {
     return started?.call(this);
   }
@@ -213,6 +199,7 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
+    TResult Function(_NextPage value)? nextPage,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -226,12 +213,112 @@ abstract class _Started implements CategoryEvent {
   const factory _Started({required final ProductItem productItem}) =
       _$StartedImpl;
 
-  @override
   ProductItem get productItem;
-  @override
   @JsonKey(ignore: true)
   _$$StartedImplCopyWith<_$StartedImpl> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$NextPageImplCopyWith<$Res> {
+  factory _$$NextPageImplCopyWith(
+          _$NextPageImpl value, $Res Function(_$NextPageImpl) then) =
+      __$$NextPageImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$NextPageImplCopyWithImpl<$Res>
+    extends _$CategoryEventCopyWithImpl<$Res, _$NextPageImpl>
+    implements _$$NextPageImplCopyWith<$Res> {
+  __$$NextPageImplCopyWithImpl(
+      _$NextPageImpl _value, $Res Function(_$NextPageImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$NextPageImpl implements _NextPage {
+  const _$NextPageImpl();
+
+  @override
+  String toString() {
+    return 'CategoryEvent.nextPage()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$NextPageImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(ProductItem productItem) started,
+    required TResult Function() nextPage,
+  }) {
+    return nextPage();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(ProductItem productItem)? started,
+    TResult? Function()? nextPage,
+  }) {
+    return nextPage?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(ProductItem productItem)? started,
+    TResult Function()? nextPage,
+    required TResult orElse(),
+  }) {
+    if (nextPage != null) {
+      return nextPage();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Started value) started,
+    required TResult Function(_NextPage value) nextPage,
+  }) {
+    return nextPage(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Started value)? started,
+    TResult? Function(_NextPage value)? nextPage,
+  }) {
+    return nextPage?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(_NextPage value)? nextPage,
+    required TResult orElse(),
+  }) {
+    if (nextPage != null) {
+      return nextPage(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _NextPage implements CategoryEvent {
+  const factory _NextPage() = _$NextPageImpl;
 }
 
 /// @nodoc

@@ -4,10 +4,11 @@ part of 'products_bloc.dart';
 class ProductsState with _$ProductsState {
   const factory ProductsState({
     required bool isLoading,
-    required List<ProductItem> item,
+    required bool isMoreLoading,
+    required List<ProductItem> items,
     required Option<Either<ProductFailure, List<ProductItem>>> optionFailureOrSuccess,
   }) = _ProductsState;
 
   factory ProductsState.initial() => ProductsState(
-      item: <ProductItem>[], isLoading: false, optionFailureOrSuccess: none());
+      items: <ProductItem>[], isLoading: false, isMoreLoading: false, optionFailureOrSuccess: none());
 }

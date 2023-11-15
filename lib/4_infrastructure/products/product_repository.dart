@@ -44,4 +44,30 @@ class ProductRepository implements IProductRepository {
       return left(const ProductFailure.failed());
     });
   }
+  
+  @override
+  Future<Either<ProductFailure, List<ProductItem>>> getProductDataWithOffset({required int offset}) async {
+    // TODO: implement getProductDataWithOffset
+    print("hws o 1");
+    // var response = await _networkService.getHttp(path: '?limit=10');
+    var response = await _networkService.getHttp(path: '?offset=$offset&limit=10');
+    print("hws o 2");
+
+    return response.match((l) {
+      print("hws o 3");
+      return left(const ProductFailure.failed());
+    }, (r) {
+      List datas = r as List;
+      
+      if (datas.isNotEmpty) {
+        print("hws o 4");
+            List<ProductItem> items =
+            List<ProductItem>.from(datas.map((e) => ProductItem.fromJson(e)));
+      print("hws o 5");
+        return right(items);
+      }
+      print("hws o 6");
+      return left(const ProductFailure.failed());
+    });
+  }
 }

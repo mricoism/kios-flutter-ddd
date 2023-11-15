@@ -19,19 +19,19 @@ mixin _$ProductsEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function() nextPage,
+    required TResult Function(List<ProductItem> productItem) nextPage,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
-    TResult? Function()? nextPage,
+    TResult? Function(List<ProductItem> productItem)? nextPage,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function()? nextPage,
+    TResult Function(List<ProductItem> productItem)? nextPage,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -119,7 +119,7 @@ class _$StartedImpl with DiagnosticableTreeMixin implements _Started {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function() nextPage,
+    required TResult Function(List<ProductItem> productItem) nextPage,
   }) {
     return started();
   }
@@ -128,7 +128,7 @@ class _$StartedImpl with DiagnosticableTreeMixin implements _Started {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
-    TResult? Function()? nextPage,
+    TResult? Function(List<ProductItem> productItem)? nextPage,
   }) {
     return started?.call();
   }
@@ -137,7 +137,7 @@ class _$StartedImpl with DiagnosticableTreeMixin implements _Started {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function()? nextPage,
+    TResult Function(List<ProductItem> productItem)? nextPage,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -187,6 +187,8 @@ abstract class _$$NextPageImplCopyWith<$Res> {
   factory _$$NextPageImplCopyWith(
           _$NextPageImpl value, $Res Function(_$NextPageImpl) then) =
       __$$NextPageImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({List<ProductItem> productItem});
 }
 
 /// @nodoc
@@ -196,60 +198,94 @@ class __$$NextPageImplCopyWithImpl<$Res>
   __$$NextPageImplCopyWithImpl(
       _$NextPageImpl _value, $Res Function(_$NextPageImpl) _then)
       : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? productItem = null,
+  }) {
+    return _then(_$NextPageImpl(
+      productItem: null == productItem
+          ? _value._productItem
+          : productItem // ignore: cast_nullable_to_non_nullable
+              as List<ProductItem>,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$NextPageImpl with DiagnosticableTreeMixin implements _NextPage {
-  const _$NextPageImpl();
+  const _$NextPageImpl({required final List<ProductItem> productItem})
+      : _productItem = productItem;
+
+  final List<ProductItem> _productItem;
+  @override
+  List<ProductItem> get productItem {
+    if (_productItem is EqualUnmodifiableListView) return _productItem;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_productItem);
+  }
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'ProductsEvent.nextPage()';
+    return 'ProductsEvent.nextPage(productItem: $productItem)';
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties.add(DiagnosticsProperty('type', 'ProductsEvent.nextPage'));
+    properties
+      ..add(DiagnosticsProperty('type', 'ProductsEvent.nextPage'))
+      ..add(DiagnosticsProperty('productItem', productItem));
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$NextPageImpl);
+        (other.runtimeType == runtimeType &&
+            other is _$NextPageImpl &&
+            const DeepCollectionEquality()
+                .equals(other._productItem, _productItem));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(_productItem));
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$NextPageImplCopyWith<_$NextPageImpl> get copyWith =>
+      __$$NextPageImplCopyWithImpl<_$NextPageImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function() nextPage,
+    required TResult Function(List<ProductItem> productItem) nextPage,
   }) {
-    return nextPage();
+    return nextPage(productItem);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
-    TResult? Function()? nextPage,
+    TResult? Function(List<ProductItem> productItem)? nextPage,
   }) {
-    return nextPage?.call();
+    return nextPage?.call(productItem);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function()? nextPage,
+    TResult Function(List<ProductItem> productItem)? nextPage,
     required TResult orElse(),
   }) {
     if (nextPage != null) {
-      return nextPage();
+      return nextPage(productItem);
     }
     return orElse();
   }
@@ -287,13 +323,20 @@ class _$NextPageImpl with DiagnosticableTreeMixin implements _NextPage {
 }
 
 abstract class _NextPage implements ProductsEvent {
-  const factory _NextPage() = _$NextPageImpl;
+  const factory _NextPage({required final List<ProductItem> productItem}) =
+      _$NextPageImpl;
+
+  List<ProductItem> get productItem;
+  @JsonKey(ignore: true)
+  _$$NextPageImplCopyWith<_$NextPageImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 mixin _$ProductsState {
   bool get isLoading => throw _privateConstructorUsedError;
-  List<ProductItem> get item => throw _privateConstructorUsedError;
+  bool get isMoreLoading => throw _privateConstructorUsedError;
+  List<ProductItem> get items => throw _privateConstructorUsedError;
   Option<Either<ProductFailure, List<ProductItem>>>
       get optionFailureOrSuccess => throw _privateConstructorUsedError;
 
@@ -310,7 +353,8 @@ abstract class $ProductsStateCopyWith<$Res> {
   @useResult
   $Res call(
       {bool isLoading,
-      List<ProductItem> item,
+      bool isMoreLoading,
+      List<ProductItem> items,
       Option<Either<ProductFailure, List<ProductItem>>>
           optionFailureOrSuccess});
 }
@@ -329,7 +373,8 @@ class _$ProductsStateCopyWithImpl<$Res, $Val extends ProductsState>
   @override
   $Res call({
     Object? isLoading = null,
-    Object? item = null,
+    Object? isMoreLoading = null,
+    Object? items = null,
     Object? optionFailureOrSuccess = null,
   }) {
     return _then(_value.copyWith(
@@ -337,9 +382,13 @@ class _$ProductsStateCopyWithImpl<$Res, $Val extends ProductsState>
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
               as bool,
-      item: null == item
-          ? _value.item
-          : item // ignore: cast_nullable_to_non_nullable
+      isMoreLoading: null == isMoreLoading
+          ? _value.isMoreLoading
+          : isMoreLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
+      items: null == items
+          ? _value.items
+          : items // ignore: cast_nullable_to_non_nullable
               as List<ProductItem>,
       optionFailureOrSuccess: null == optionFailureOrSuccess
           ? _value.optionFailureOrSuccess
@@ -359,7 +408,8 @@ abstract class _$$ProductsStateImplCopyWith<$Res>
   @useResult
   $Res call(
       {bool isLoading,
-      List<ProductItem> item,
+      bool isMoreLoading,
+      List<ProductItem> items,
       Option<Either<ProductFailure, List<ProductItem>>>
           optionFailureOrSuccess});
 }
@@ -376,7 +426,8 @@ class __$$ProductsStateImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? isLoading = null,
-    Object? item = null,
+    Object? isMoreLoading = null,
+    Object? items = null,
     Object? optionFailureOrSuccess = null,
   }) {
     return _then(_$ProductsStateImpl(
@@ -384,9 +435,13 @@ class __$$ProductsStateImplCopyWithImpl<$Res>
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
               as bool,
-      item: null == item
-          ? _value._item
-          : item // ignore: cast_nullable_to_non_nullable
+      isMoreLoading: null == isMoreLoading
+          ? _value.isMoreLoading
+          : isMoreLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
+      items: null == items
+          ? _value._items
+          : items // ignore: cast_nullable_to_non_nullable
               as List<ProductItem>,
       optionFailureOrSuccess: null == optionFailureOrSuccess
           ? _value.optionFailureOrSuccess
@@ -403,18 +458,21 @@ class _$ProductsStateImpl
     implements _ProductsState {
   const _$ProductsStateImpl(
       {required this.isLoading,
-      required final List<ProductItem> item,
+      required this.isMoreLoading,
+      required final List<ProductItem> items,
       required this.optionFailureOrSuccess})
-      : _item = item;
+      : _items = items;
 
   @override
   final bool isLoading;
-  final List<ProductItem> _item;
   @override
-  List<ProductItem> get item {
-    if (_item is EqualUnmodifiableListView) return _item;
+  final bool isMoreLoading;
+  final List<ProductItem> _items;
+  @override
+  List<ProductItem> get items {
+    if (_items is EqualUnmodifiableListView) return _items;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_item);
+    return EqualUnmodifiableListView(_items);
   }
 
   @override
@@ -423,7 +481,7 @@ class _$ProductsStateImpl
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'ProductsState(isLoading: $isLoading, item: $item, optionFailureOrSuccess: $optionFailureOrSuccess)';
+    return 'ProductsState(isLoading: $isLoading, isMoreLoading: $isMoreLoading, items: $items, optionFailureOrSuccess: $optionFailureOrSuccess)';
   }
 
   @override
@@ -432,7 +490,8 @@ class _$ProductsStateImpl
     properties
       ..add(DiagnosticsProperty('type', 'ProductsState'))
       ..add(DiagnosticsProperty('isLoading', isLoading))
-      ..add(DiagnosticsProperty('item', item))
+      ..add(DiagnosticsProperty('isMoreLoading', isMoreLoading))
+      ..add(DiagnosticsProperty('items', items))
       ..add(DiagnosticsProperty(
           'optionFailureOrSuccess', optionFailureOrSuccess));
   }
@@ -444,14 +503,16 @@ class _$ProductsStateImpl
             other is _$ProductsStateImpl &&
             (identical(other.isLoading, isLoading) ||
                 other.isLoading == isLoading) &&
-            const DeepCollectionEquality().equals(other._item, _item) &&
+            (identical(other.isMoreLoading, isMoreLoading) ||
+                other.isMoreLoading == isMoreLoading) &&
+            const DeepCollectionEquality().equals(other._items, _items) &&
             (identical(other.optionFailureOrSuccess, optionFailureOrSuccess) ||
                 other.optionFailureOrSuccess == optionFailureOrSuccess));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, isLoading,
-      const DeepCollectionEquality().hash(_item), optionFailureOrSuccess);
+  int get hashCode => Object.hash(runtimeType, isLoading, isMoreLoading,
+      const DeepCollectionEquality().hash(_items), optionFailureOrSuccess);
 
   @JsonKey(ignore: true)
   @override
@@ -463,14 +524,17 @@ class _$ProductsStateImpl
 abstract class _ProductsState implements ProductsState {
   const factory _ProductsState(
       {required final bool isLoading,
-      required final List<ProductItem> item,
+      required final bool isMoreLoading,
+      required final List<ProductItem> items,
       required final Option<Either<ProductFailure, List<ProductItem>>>
           optionFailureOrSuccess}) = _$ProductsStateImpl;
 
   @override
   bool get isLoading;
   @override
-  List<ProductItem> get item;
+  bool get isMoreLoading;
+  @override
+  List<ProductItem> get items;
   @override
   Option<Either<ProductFailure, List<ProductItem>>> get optionFailureOrSuccess;
   @override

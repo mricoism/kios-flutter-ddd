@@ -39,7 +39,9 @@ class CategoryBloc extends Bloc<CategoryEvent, CategoryState> {
           // emit(CategoryState.loaded(optionFailedOrSuccess: optionOf(either)));
         });
         debugPrint('flow DetailProductBloc END');
-      });
+      }, nextPage: () {
+        
+      },);
     });
   }
 }
