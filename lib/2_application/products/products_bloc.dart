@@ -13,21 +13,17 @@ part 'products_event.dart';
 part 'products_state.dart';
 part 'products_bloc.freezed.dart';
 
-
-
-
-
 // @injectable
 class ProductsBloc extends Bloc<ProductsEvent, ProductsState> {
   ProductsBloc() : super(ProductsState.initial()) {
     debugPrint('flow productBloc START');
-    int _offset = 0;
 
     final IProductRepository productRepository = ProductRepository();
     debugPrint('flow productBloc after initial ProductRepository()');
 
     on<ProductsEvent>((events, emit) async {
       await events.when(
+        // * NEXT PAGE
         started: () async {
           debugPrint('flow productBloc running when event start() triggered');
           emit(ProductsState.initial());
@@ -49,49 +45,33 @@ class ProductsBloc extends Bloc<ProductsEvent, ProductsState> {
                 optionFailureOrSuccess: optionOf(either)));
           });
           debugPrint('flow productBloc END');
-          // print('RESULTS:  $failureOrProduct');
         },
-        nextPage: (thisProductItem) async {
-          emit(state.copyWith(isMoreLoading: true));
-          // List<ProductItem> items = products;
-          // _offset = products.length + 10;
-          debugPrint('hws N 0.1');
-          print('hws p 2 ${thisProductItem.length}');
-          final _offset = thisProductItem.length;
 
+        // * NEXT PAGE
+        nextPage: (thisProductItem) async {
+          debugPrint(
+              'flow productBloc Event nextPage running when load more data');
+
+          emit(state.copyWith(isMoreLoading: true));
+
+          int _offset = thisProductItem.length;
           final Either<ProductFailure, List<ProductItem>> failureOrProduct =
               await productRepository.getProductDataWithOffset(offset: _offset);
-          //List<ProductItem> items = state.item; // in this case not really needed
-          // products.addAll();
 
-          debugPrint('hws N 0.2 | ${thisProductItem.length}');
           Either<ProductFailure, List<ProductItem>> either =
               failureOrProduct.match((l) {
-                debugPrint('hws N 0.3');
-                return left(l);
-                
-                }, (r) {
-                  debugPrint('hws N 0.4 ${r.length}');
-                  // products.toList().addAll(r);
-                  
-                  var newList = List<ProductItem>.from(thisProductItem)..addAll(r);
-                  print('hws p 3 ${thisProductItem.length}');
-                // List<ProductItem> tempValue = thisProductItem;
-                // tempValue.addAll(r);
-                debugPrint('hws N 0.5');
-                return right(newList);
-              });
-          debugPrint('hws N 1');
-          failureOrProduct.fold((_) {
-            debugPrint('hws N 2');
-            debugPrint('flow productBloc fail to get data');
+            debugPrint('flow productBloc Event nextPage fail to get data');
+            return left(l);
           }, (r) {
-            debugPrint('hws N 3 ${thisProductItem.length} | ${r.length}');
-            debugPrint('flow productBloc success to load data');
+            debugPrint('flow productBloc Event nextPage success to load data');
             var newList = List<ProductItem>.from(thisProductItem)..addAll(r);
-            // products.toList().addAll(r);
-            print('hws p 4 ${thisProductItem.length}');
-            debugPrint('hws N 4 ${newList.length}');
+            return right(newList);
+          });
+          failureOrProduct.fold((_) {
+            debugPrint('flow productBloc Event nextPage fail to get data');
+          }, (r) {
+            debugPrint('flow productBloc Event nextPage success to load data');
+            var newList = List<ProductItem>.from(thisProductItem)..addAll(r);
             emit(state.copyWith(isMoreLoading: false));
             emit(
               state.copyWith(
@@ -100,32 +80,8 @@ class ProductsBloc extends Bloc<ProductsEvent, ProductsState> {
               ),
             );
           });
-
-          
-
-          print('hws m 2');
-          // items.addAll(products);
-          print('hws l 3 $_offset |');
-          print('JALAN CODENYA ');
         },
       );
-
-      // print("Riko C");
-      // emit(ProductsState.initial());
-      // emit(state.copyWith(isLoading: true));
-      // print("HEYYYY");
-      // final Either<ProductFailure, List<ProductItem>> failureOrProduct = await productRepository.getProductData();
-      // List<ProductItem> items = state.item;
-      // failureOrProduct.fold((_) {
-      //   print('Something wrong about this');
-      // }, (products) {
-      //   print('perfects $products | | | $items ');
-      //   emit(state.copyWith(item: products));
-      // });
-      // // failureOrProduct.match((l) => left(ProductFailure.failed()), (r) => );
-      // emit(state.copyWith(isLoading: false));
-
-      // print('RESULTS:  $failureOrProduct');
     });
   }
 }

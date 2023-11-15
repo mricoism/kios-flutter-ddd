@@ -1,9 +1,10 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:kios/1_presentation/pages/category/releated_product_by_category.dart';
+import 'package:kios/1_presentation/pages/detail_product/widgets/releated_product_by_category.dart';
 import 'package:kios/1_presentation/widgets/component/custom_button.dart';
 import 'package:kios/2_application/detail_product/detail_product_bloc.dart';
+import 'package:kios/2_application/products/products_bloc.dart';
 import 'package:kios/4_infrastructure/products/product_item.dart';
 
 class DetailProductPage extends StatelessWidget {
@@ -14,9 +15,9 @@ class DetailProductPage extends StatelessWidget {
   Widget build(BuildContext context) {
     debugPrint('hws a ${productItem.idy}');
     return BlocProvider(
-      create: (context) => DetailProductBloc()
-        ..add(DetailProductEvent.started(idy: productItem.idy)),
-      child: BlocConsumer<DetailProductBloc, DetailProductState>(
+      create: (context) => ProductsBloc()
+        ..add(const ProductsEvent.started()),
+      child: BlocConsumer<ProductsBloc, ProductsState>(
         listener: (BuildContext context, state) {},
         builder: (BuildContext context, state) {
           return Scaffold(
