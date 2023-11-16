@@ -19,7 +19,6 @@ class ProductScreen extends StatelessWidget {
         });
       },
       builder: (BuildContext context, ProductsState state) {
-        bool isMoreLoading = true;
         return Scaffold(
           // appBar: AppBar(
           //   title: const Text('KIOS'),

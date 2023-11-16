@@ -78,12 +78,14 @@ class ProductsBloc extends Bloc<ProductsEvent, ProductsState> {
             debugPrint('flow productBloc Event nextPage fail to get data (response.match)');
             return left(l);
           }, (r) {
+            emit(state.copyWith(isMoreLoading: false));
             debugPrint('flow productBloc Event nextPage success to load data');
             var newList = List<ProductItem>.from(thisProductItem)..addAll(r);
             return right(ProductSearch(itemToSearch: newList));
           });
 
           response.fold((_) {
+            emit(state.copyWith(isMoreLoading: false));
             debugPrint('flow productBloc Event nextPage fail to get data (response.fold)');
           }, (r) {
             debugPrint('flow productBloc Event nextPage success to load data');
@@ -93,6 +95,7 @@ class ProductsBloc extends Bloc<ProductsEvent, ProductsState> {
               state.copyWith(
                 items: newList,
                 optionFailureOrSuccess: optionOf(either),
+                // optionMoreLoading: optionOf(either)
               ),
             );
           });

@@ -505,6 +505,8 @@ mixin _$ProductsState {
   List<ProductItem> get items => throw _privateConstructorUsedError;
   Option<Either<ProductFailure, ProductSearch>> get optionFailureOrSuccess =>
       throw _privateConstructorUsedError;
+  Option<Either<ProductFailure, bool>> get optionMoreLoading =>
+      throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $ProductsStateCopyWith<ProductsState> get copyWith =>
@@ -522,7 +524,8 @@ abstract class $ProductsStateCopyWith<$Res> {
       bool isMoreLoading,
       String check,
       List<ProductItem> items,
-      Option<Either<ProductFailure, ProductSearch>> optionFailureOrSuccess});
+      Option<Either<ProductFailure, ProductSearch>> optionFailureOrSuccess,
+      Option<Either<ProductFailure, bool>> optionMoreLoading});
 }
 
 /// @nodoc
@@ -543,6 +546,7 @@ class _$ProductsStateCopyWithImpl<$Res, $Val extends ProductsState>
     Object? check = null,
     Object? items = null,
     Object? optionFailureOrSuccess = null,
+    Object? optionMoreLoading = null,
   }) {
     return _then(_value.copyWith(
       isLoading: null == isLoading
@@ -565,6 +569,10 @@ class _$ProductsStateCopyWithImpl<$Res, $Val extends ProductsState>
           ? _value.optionFailureOrSuccess
           : optionFailureOrSuccess // ignore: cast_nullable_to_non_nullable
               as Option<Either<ProductFailure, ProductSearch>>,
+      optionMoreLoading: null == optionMoreLoading
+          ? _value.optionMoreLoading
+          : optionMoreLoading // ignore: cast_nullable_to_non_nullable
+              as Option<Either<ProductFailure, bool>>,
     ) as $Val);
   }
 }
@@ -582,7 +590,8 @@ abstract class _$$ProductsStateImplCopyWith<$Res>
       bool isMoreLoading,
       String check,
       List<ProductItem> items,
-      Option<Either<ProductFailure, ProductSearch>> optionFailureOrSuccess});
+      Option<Either<ProductFailure, ProductSearch>> optionFailureOrSuccess,
+      Option<Either<ProductFailure, bool>> optionMoreLoading});
 }
 
 /// @nodoc
@@ -601,6 +610,7 @@ class __$$ProductsStateImplCopyWithImpl<$Res>
     Object? check = null,
     Object? items = null,
     Object? optionFailureOrSuccess = null,
+    Object? optionMoreLoading = null,
   }) {
     return _then(_$ProductsStateImpl(
       isLoading: null == isLoading
@@ -623,6 +633,10 @@ class __$$ProductsStateImplCopyWithImpl<$Res>
           ? _value.optionFailureOrSuccess
           : optionFailureOrSuccess // ignore: cast_nullable_to_non_nullable
               as Option<Either<ProductFailure, ProductSearch>>,
+      optionMoreLoading: null == optionMoreLoading
+          ? _value.optionMoreLoading
+          : optionMoreLoading // ignore: cast_nullable_to_non_nullable
+              as Option<Either<ProductFailure, bool>>,
     ));
   }
 }
@@ -637,7 +651,8 @@ class _$ProductsStateImpl
       required this.isMoreLoading,
       required this.check,
       required final List<ProductItem> items,
-      required this.optionFailureOrSuccess})
+      required this.optionFailureOrSuccess,
+      required this.optionMoreLoading})
       : _items = items;
 
   @override
@@ -656,10 +671,12 @@ class _$ProductsStateImpl
 
   @override
   final Option<Either<ProductFailure, ProductSearch>> optionFailureOrSuccess;
+  @override
+  final Option<Either<ProductFailure, bool>> optionMoreLoading;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'ProductsState(isLoading: $isLoading, isMoreLoading: $isMoreLoading, check: $check, items: $items, optionFailureOrSuccess: $optionFailureOrSuccess)';
+    return 'ProductsState(isLoading: $isLoading, isMoreLoading: $isMoreLoading, check: $check, items: $items, optionFailureOrSuccess: $optionFailureOrSuccess, optionMoreLoading: $optionMoreLoading)';
   }
 
   @override
@@ -671,8 +688,9 @@ class _$ProductsStateImpl
       ..add(DiagnosticsProperty('isMoreLoading', isMoreLoading))
       ..add(DiagnosticsProperty('check', check))
       ..add(DiagnosticsProperty('items', items))
-      ..add(DiagnosticsProperty(
-          'optionFailureOrSuccess', optionFailureOrSuccess));
+      ..add(
+          DiagnosticsProperty('optionFailureOrSuccess', optionFailureOrSuccess))
+      ..add(DiagnosticsProperty('optionMoreLoading', optionMoreLoading));
   }
 
   @override
@@ -687,12 +705,20 @@ class _$ProductsStateImpl
             (identical(other.check, check) || other.check == check) &&
             const DeepCollectionEquality().equals(other._items, _items) &&
             (identical(other.optionFailureOrSuccess, optionFailureOrSuccess) ||
-                other.optionFailureOrSuccess == optionFailureOrSuccess));
+                other.optionFailureOrSuccess == optionFailureOrSuccess) &&
+            (identical(other.optionMoreLoading, optionMoreLoading) ||
+                other.optionMoreLoading == optionMoreLoading));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, isLoading, isMoreLoading, check,
-      const DeepCollectionEquality().hash(_items), optionFailureOrSuccess);
+  int get hashCode => Object.hash(
+      runtimeType,
+      isLoading,
+      isMoreLoading,
+      check,
+      const DeepCollectionEquality().hash(_items),
+      optionFailureOrSuccess,
+      optionMoreLoading);
 
   @JsonKey(ignore: true)
   @override
@@ -708,7 +734,9 @@ abstract class _ProductsState implements ProductsState {
       required final String check,
       required final List<ProductItem> items,
       required final Option<Either<ProductFailure, ProductSearch>>
-          optionFailureOrSuccess}) = _$ProductsStateImpl;
+          optionFailureOrSuccess,
+      required final Option<Either<ProductFailure, bool>>
+          optionMoreLoading}) = _$ProductsStateImpl;
 
   @override
   bool get isLoading;
@@ -720,6 +748,8 @@ abstract class _ProductsState implements ProductsState {
   List<ProductItem> get items;
   @override
   Option<Either<ProductFailure, ProductSearch>> get optionFailureOrSuccess;
+  @override
+  Option<Either<ProductFailure, bool>> get optionMoreLoading;
   @override
   @JsonKey(ignore: true)
   _$$ProductsStateImplCopyWith<_$ProductsStateImpl> get copyWith =>
