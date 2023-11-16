@@ -23,7 +23,6 @@ class RelatedProductByClass extends StatelessWidget {
           return Container(
             height: 360,
             child: state.optionFailedOrSuccess.match(() {
-              print('hws d ');
               return Shimmer.fromColors(
                 baseColor: Colors.grey.shade300,
                 highlightColor: Color.fromRGBO(255, 255, 255, 1),

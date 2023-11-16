@@ -13,7 +13,6 @@ class DetailProductPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    debugPrint('hws a ${productItem.idy}');
     return BlocProvider(
       create: (context) => ProductsBloc()
         ..add(const ProductsEvent.started()),

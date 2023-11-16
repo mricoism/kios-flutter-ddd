@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:kios/1_presentation/pages/detail_product/detail_product_page.dart';
 import 'package:kios/1_presentation/pages/products/widgets/shimmer_item.dart';
 import 'package:kios/2_application/products/products_bloc.dart';
+import 'package:kios/4_infrastructure/products/product_item.dart';
 
 class ProductScreen extends StatelessWidget {
   const ProductScreen({super.key});
@@ -26,6 +27,26 @@ class ProductScreen extends StatelessWidget {
           body: Container(
             child: Column(
               children: [
+                Container(
+                  alignment: Alignment.bottomCenter,
+                  height: 120,
+                  // color: Colors.cyan,
+                  child: Padding(
+                    padding:
+                        const EdgeInsets.only(left: 24, right: 24, bottom: 10),
+                    child: Container(
+                      // height: 45,
+                        child: TextFormField(
+                      decoration: InputDecoration(
+                        border: OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
+                          prefixIcon: Icon(Icons.search_rounded)),
+                      autocorrect: false,
+                      onChanged: (value) {
+                        bloc.add(ProductsEvent.search(keyword: value));
+                      },
+                    )),
+                  ),
+                ),
                 Expanded(
                   child: state.optionFailureOrSuccess.match(
                       () => const ShimmerProductList(), // before data loaded
@@ -34,7 +55,10 @@ class ProductScreen extends StatelessWidget {
                           (l) => const Center(
                                 child: Text('No Data'),
                               ),
-                          (products) => Padding(
+                          (search) => search.value.match((l) {
+                            return Center(child: Text('not Found'),);
+                          }, (valueItems) {
+                            return Padding(
                                 padding:
                                     const EdgeInsets.symmetric(horizontal: 14),
                                 child:
@@ -61,9 +85,9 @@ class ProductScreen extends StatelessWidget {
                                                 childAspectRatio: 0.6,
                                                 mainAxisSpacing: 30,
                                                 crossAxisSpacing: 10),
-                                        itemCount: state.items.length,
+                                        itemCount: search.getOrCrash().length,
                                         itemBuilder: (BuildContext ctx, index) {
-                                          var item = state.items[index];
+                                          ProductItem item = valueItems[index];
                                           var image = item.images?[0] ?? '';
                                           return GestureDetector(
                                             onTap: () {
@@ -196,7 +220,8 @@ class ProductScreen extends StatelessWidget {
                                         }),
                                   ),
                                 ),
-                              ))),
+                              );
+                          }) )),
                 ),
                 if (state.isMoreLoading)
                   Padding(

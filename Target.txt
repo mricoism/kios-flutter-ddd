@@ -3,8 +3,8 @@
 - offset pada list product | DONE!
 - cache image (cached_network_image: ^3.3.0) | DONE!
 - Pakai Dio untuk get data | DONE!
-- implementasi dependency injection (get_it, injectable)
-- routing dengan auto_route atau go_router
+- implementasi dependency injection (get_it, injectable) |
+- routing dengan auto_route atau go_router | 
 
 - unit testing
 - 

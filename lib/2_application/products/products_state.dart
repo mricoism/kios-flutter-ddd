@@ -5,10 +5,12 @@ class ProductsState with _$ProductsState {
   const factory ProductsState({
     required bool isLoading,
     required bool isMoreLoading,
+    required String check,
     required List<ProductItem> items,
-    required Option<Either<ProductFailure, List<ProductItem>>> optionFailureOrSuccess,
+
+    required Option<Either<ProductFailure, ProductSearch>> optionFailureOrSuccess,
   }) = _ProductsState;
 
   factory ProductsState.initial() => ProductsState(
-      items: <ProductItem>[], isLoading: false, isMoreLoading: false, optionFailureOrSuccess: none());
+      items: <ProductItem>[], check: '', isLoading: false, isMoreLoading: false, optionFailureOrSuccess: none());
 }
