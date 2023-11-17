@@ -5,6 +5,7 @@
 - Pakai Dio untuk get data | DONE!
 - implementasi dependency injection (get_it, injectable) |
 - routing dengan auto_route atau go_router | 
+- search feature | DONE!
 
 - unit testing
 - 
@@ -12,3 +13,5 @@
 
 
 https://stackoverflow.com/questions/21826342/how-do-i-combine-two-lists-in-dart
+https://stackoverflow.com/questions/59769939/how-to-handle-timeout-error-with-dio-in-flutter
+

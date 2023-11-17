@@ -161,28 +161,16 @@ class CommonUtils {
   }
 
   static int offsetValidator(int offset) {
-
-    print('hws c 2 $offset');
-    print('hws c 3 ${offset % 10}');
-    print('hws c 4 ${offset % 10 == 0}');
-
     int sisa = 10 - (offset % 10);
     if (sisa == 0 ) {
-      print('hws c 5 a ${sisa}');
       return offset;
     }
 
     int genapkan = sisa + offset;
-    print('hws c 5 b ${sisa}');
-    print('hws c 6 ${genapkan}');
-    
-    
 
     if (offset % 10 == 0) {
-      print('hws c 7 ${offset}');
       return offset;
     } else {
-      print('hws c 8 ${genapkan}');
       return genapkan;
     }
   }

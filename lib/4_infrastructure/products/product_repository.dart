@@ -20,8 +20,6 @@ class ProductRepository implements IProductRepository {
 
     try {
       var response = await _networkService.getHttp(path: '?offset=0&limit=10');
-
-      print('hws d');
       return response.match((l) {
         debugPrint('flow ProductRepository fail get response');
         return left(const ProductFailure.failed());
@@ -58,9 +56,6 @@ class ProductRepository implements IProductRepository {
     return response.match((l) {
       return left(const ProductFailure.failed());
     }, (r) {
-      print('hws b 1 $r');
-      print(
-          'hws b 2 https://api.escuelajs.co/api/v1/products?offset=$offset&limit=10');
       List datas = r as List;
 
       if (datas.isNotEmpty) {
