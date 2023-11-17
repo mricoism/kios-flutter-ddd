@@ -3,6 +3,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:fpdart/fpdart.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:injectable/injectable.dart';
 import 'package:kios/3_domain/core/common_utility.dart';
 // import 'package:injectable/injectable.dart';
 import 'package:kios/3_domain/products/i_product_repository.dart';
@@ -16,12 +17,15 @@ part 'products_event.dart';
 part 'products_state.dart';
 part 'products_bloc.freezed.dart';
 
-// @injectable
+@injectable
 class ProductsBloc extends Bloc<ProductsEvent, ProductsState> {
-  ProductsBloc() : super(ProductsState.initial()) {
+  // final IProductRepository productRepository = ProductRepository();
+  final IProductRepository productRepository;
+  
+  ProductsBloc(this.productRepository) : super(ProductsState.initial()) {
     debugPrint('flow productBloc START');
 
-    final IProductRepository productRepository = ProductRepository();
+    
     debugPrint('flow productBloc after initial ProductRepository()');
 
     on<ProductsEvent>(
@@ -93,7 +97,6 @@ class ProductsBloc extends Bloc<ProductsEvent, ProductsState> {
                 state.copyWith(
                   items: newList,
                   optionFailureOrSuccess: optionOf(either),
-                  // optionMoreLoading: optionOf(either)
                 ),
               );
             });
@@ -112,8 +115,6 @@ class ProductsBloc extends Bloc<ProductsEvent, ProductsState> {
       transformer: debouncing(),
     );
   }
-
-  // debounce() {}
 
   EventTransformer<ProductsEvent> debouncing<ProductsEvent>() {
     return (events, mapper) {

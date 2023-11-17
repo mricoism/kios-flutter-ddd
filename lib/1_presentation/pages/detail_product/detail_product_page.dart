@@ -5,6 +5,7 @@ import 'package:kios/1_presentation/pages/detail_product/widgets/releated_produc
 import 'package:kios/1_presentation/widgets/component/custom_button.dart';
 import 'package:kios/2_application/products/products_bloc.dart';
 import 'package:kios/4_infrastructure/products/product_item.dart';
+import 'package:kios/injection.dart';
 
 class DetailProductPage extends StatelessWidget {
   final ProductItem productItem;
@@ -13,7 +14,7 @@ class DetailProductPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => ProductsBloc()
+      create: (context) => getIt<ProductsBloc>()
         ..add(const ProductsEvent.started()),
       child: BlocConsumer<ProductsBloc, ProductsState>(
         listener: (BuildContext context, state) {},

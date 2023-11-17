@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fpdart/src/either.dart';
+import 'package:injectable/injectable.dart';
 import 'package:kios/3_domain/core/exceptions/server_exceptions.dart';
 // import 'package:injectable/injectable.dart';
 import 'package:kios/3_domain/products/i_product_repository.dart';
@@ -9,9 +10,10 @@ import 'package:kios/4_infrastructure/core/network/network_service.dart';
 import 'package:kios/4_infrastructure/products/product_item.dart';
 
 // @LazySingleton(as: IProductRepository)
+@LazySingleton(as: IProductRepository)
 class ProductRepository implements IProductRepository {
   final INetworkService _networkService = NetworkService();
-
+  // final INetworkService _networkService;
   // ProductRepository._(this._networkService);
 
   @override

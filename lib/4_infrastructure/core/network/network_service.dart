@@ -2,6 +2,7 @@
 import 'dart:convert';
 
 import 'package:fpdart/src/either.dart';
+import 'package:injectable/injectable.dart';
 import 'package:kios/3_domain/core/exceptions/server_exceptions.dart';
 import 'package:kios/4_infrastructure/core/network/i_network_service.dart';
 // import 'package:http/http.dart' as http;
@@ -9,6 +10,7 @@ import 'package:dio/dio.dart';
 
 // * URL BASE platzy : https://api.escuelajs.co/api/v1/products?offset=0&limit=10
 
+// @LazySingleton(as: INetworkService)
 class NetworkService implements INetworkService {
 
   final dio = Dio();

@@ -1,12 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:injectable/injectable.dart';
 import 'package:kios/1_presentation/pages/detail_product/detail_product_page.dart';
 import 'package:kios/1_presentation/pages/products/product_page.dart';
+import 'package:kios/injection.dart';
 
 void main() async {
-  runApp(const MyApp());
+
+  await configureInjection(Environment.dev);
+
+  runApp(MyApp());
 }
 
+@injectable
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
