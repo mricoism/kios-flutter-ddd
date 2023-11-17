@@ -2,6 +2,7 @@ import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:fpdart/fpdart.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:injectable/injectable.dart';
 import 'package:kios/3_domain/product_by_category/i_product_by_category_repo.dart';
 import 'package:kios/3_domain/products/product_failure.dart';
 import 'package:kios/4_infrastructure/product_by_category/product_by_category_repo.dart';
@@ -11,11 +12,14 @@ part 'product_by_category_event.dart';
 part 'product_by_category_state.dart';
 part 'product_by_category_bloc.freezed.dart';
 
+@injectable
 class ProductByCategoryBloc
     extends Bloc<ProductByCategoryEvent, ProductByCategoryState> {
-  ProductByCategoryBloc() : super(ProductByCategoryState.initial()) {
+  // final IProductByCategoryRepo prodByCatRepo = ProductByCategoryRepo();
+    final IProductByCategoryRepo prodByCatRepo;
+  ProductByCategoryBloc(this.prodByCatRepo) : super(ProductByCategoryState.initial()) {
     debugPrint('flow ProductByCategoryBloc START');
-    final iProductByCategoryRepo prodByCatRepo = ProductByCategoryRepo();
+
 
     on<ProductByCategoryEvent>((event, emit) async {
       // TODO: implement event handler

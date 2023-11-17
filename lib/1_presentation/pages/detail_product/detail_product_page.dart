@@ -14,8 +14,7 @@ class DetailProductPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => getIt<ProductsBloc>()
-        ..add(const ProductsEvent.started()),
+      create: (context) => getIt<ProductsBloc>()..add(const ProductsEvent.started()),
       child: BlocConsumer<ProductsBloc, ProductsState>(
         listener: (BuildContext context, state) {},
         builder: (BuildContext context, state) {

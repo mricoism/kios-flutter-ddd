@@ -1,13 +1,15 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:fpdart/src/either.dart';
+import 'package:injectable/injectable.dart';
 import 'package:kios/3_domain/product_by_category/i_product_by_category_repo.dart';
 import 'package:kios/3_domain/products/product_failure.dart';
 import 'package:kios/4_infrastructure/core/network/i_network_service.dart';
 import 'package:kios/4_infrastructure/core/network/network_service.dart';
 import 'package:kios/4_infrastructure/products/product_item.dart';
 
-class ProductByCategoryRepo implements iProductByCategoryRepo {
+@LazySingleton(as: IProductByCategoryRepo)
+class ProductByCategoryRepo implements IProductByCategoryRepo {
   final INetworkService _networkService = NetworkService();
 
   @override

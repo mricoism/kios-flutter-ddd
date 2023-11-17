@@ -1,4 +1,3 @@
-
 import 'dart:convert';
 
 import 'package:fpdart/src/either.dart';
@@ -12,18 +11,18 @@ import 'package:dio/dio.dart';
 
 // @LazySingleton(as: INetworkService)
 class NetworkService implements INetworkService {
-
   final dio = Dio();
 
-void configureDio() {
-  // Set default configs
-  dio.options.baseUrl = 'https://api.escuelajs.co/api/v1/products';
-  dio.options.connectTimeout = Duration(seconds: 5);
-  dio.options.receiveTimeout = Duration(seconds: 3);
-}
+  void configureDio() {
+    // Set default configs
+    dio.options.baseUrl = 'https://api.escuelajs.co/api/v1/products';
+    dio.options.connectTimeout = Duration(seconds: 5);
+    dio.options.receiveTimeout = Duration(seconds: 3);
+  }
 
   @override
-  Future<Either<Error, dynamic>> getHttp({required String path, String? parameter}) async {
+  Future<Either<Error, dynamic>> getHttp(
+      {required String path, String? parameter}) async {
     // TODO: implement getHttp
     configureDio();
     final response = await dio.get(path);
@@ -31,7 +30,6 @@ void configureDio() {
 
     return right(casting);
   }
-  
 }
 
 

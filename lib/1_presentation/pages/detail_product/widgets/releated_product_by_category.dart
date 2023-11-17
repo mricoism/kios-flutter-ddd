@@ -5,6 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:kios/1_presentation/pages/detail_product/detail_product_page.dart';
 import 'package:kios/2_application/product_by_category/product_by_category_bloc.dart';
 import 'package:kios/4_infrastructure/products/product_item.dart';
+import 'package:kios/injection.dart';
 import 'package:shimmer/shimmer.dart';
 
 class RelatedProductByClass extends StatelessWidget {
@@ -14,7 +15,7 @@ class RelatedProductByClass extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => ProductByCategoryBloc()
+      create: (context) => getIt<ProductByCategoryBloc>()
         ..add(ProductByCategoryEvent.started(productItem: productItem)),
       child: BlocConsumer<ProductByCategoryBloc, ProductByCategoryState>(
         listener: (BuildContext context, state) {},
