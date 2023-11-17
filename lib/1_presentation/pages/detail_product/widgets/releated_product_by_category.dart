@@ -3,7 +3,6 @@ import 'package:card_swiper/card_swiper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:kios/1_presentation/pages/detail_product/detail_product_page.dart';
-import 'package:kios/2_application/category/category_bloc.dart';
 import 'package:kios/2_application/product_by_category/product_by_category_bloc.dart';
 import 'package:kios/4_infrastructure/products/product_item.dart';
 import 'package:shimmer/shimmer.dart';
