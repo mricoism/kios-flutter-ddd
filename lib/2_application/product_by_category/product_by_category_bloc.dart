@@ -5,7 +5,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:kios/3_domain/product_by_category/i_product_by_category_repo.dart';
 import 'package:kios/3_domain/products/product_failure.dart';
-import 'package:kios/4_infrastructure/product_by_category/product_by_category_repo.dart';
+// import 'package:kios/4_infrastructure/product_by_category/product_by_category_repo.dart';
 import 'package:kios/4_infrastructure/products/product_item.dart';
 
 part 'product_by_category_event.dart';

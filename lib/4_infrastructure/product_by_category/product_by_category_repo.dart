@@ -1,16 +1,19 @@
-import 'package:dio/dio.dart';
+// import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:fpdart/src/either.dart';
 import 'package:injectable/injectable.dart';
 import 'package:kios/3_domain/product_by_category/i_product_by_category_repo.dart';
 import 'package:kios/3_domain/products/product_failure.dart';
 import 'package:kios/4_infrastructure/core/network/i_network_service.dart';
-import 'package:kios/4_infrastructure/core/network/network_service.dart';
+// import 'package:kios/4_infrastructure/core/network/network_service.dart';
 import 'package:kios/4_infrastructure/products/product_item.dart';
 
 @LazySingleton(as: IProductByCategoryRepo)
 class ProductByCategoryRepo implements IProductByCategoryRepo {
-  final INetworkService _networkService = NetworkService();
+  //final INetworkService _networkService = NetworkService(); // if without register module
+  // final INetworkService _networkService = NetworkService('https://api.escuelajs.co/api/v1/products');
+  final INetworkService _networkService;
+  ProductByCategoryRepo(this._networkService);
 
   @override
   Future<Either<ProductFailure, List<ProductItem>>> getProductByCategory(

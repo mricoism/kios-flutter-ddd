@@ -1,8 +1,8 @@
-import 'dart:convert';
+// import 'dart:convert';
 
 import 'package:fpdart/src/either.dart';
-import 'package:injectable/injectable.dart';
-import 'package:kios/3_domain/core/exceptions/server_exceptions.dart';
+// import 'package:injectable/injectable.dart';
+// import 'package:kios/3_domain/core/exceptions/server_exceptions.dart';
 import 'package:kios/4_infrastructure/core/network/i_network_service.dart';
 // import 'package:http/http.dart' as http;
 import 'package:dio/dio.dart';
@@ -11,11 +11,15 @@ import 'package:dio/dio.dart';
 
 // @LazySingleton(as: INetworkService)
 class NetworkService implements INetworkService {
+  final String clientBaseUrl;
+
+  NetworkService(this.clientBaseUrl);
+
   final dio = Dio();
 
   void configureDio() {
     // Set default configs
-    dio.options.baseUrl = 'https://api.escuelajs.co/api/v1/products';
+    dio.options.baseUrl = clientBaseUrl;
     dio.options.connectTimeout = Duration(seconds: 5);
     dio.options.receiveTimeout = Duration(seconds: 3);
   }

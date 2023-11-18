@@ -10,7 +10,7 @@ import 'package:kios/3_domain/products/i_product_repository.dart';
 import 'package:kios/3_domain/products/product_failure.dart';
 import 'package:kios/3_domain/products/product_object.dart';
 import 'package:kios/4_infrastructure/products/product_item.dart';
-import 'package:kios/4_infrastructure/products/product_repository.dart';
+// import 'package:kios/4_infrastructure/products/product_repository.dart';
 import 'package:stream_transform/stream_transform.dart';
 
 part 'products_event.dart';
@@ -70,7 +70,7 @@ class ProductsBloc extends Bloc<ProductsEvent, ProductsState> {
             final Either<ProductFailure, List<ProductItem>> response =
                 await productRepository.getProductDataWithOffset(
                     offset: _offset);
-            List<ProductItem> items = state.items;
+            //List<ProductItem> items = state.items; // in this case not really needed
 
             Either<ProductFailure, ProductSearch> either = response.match((l) {
               debugPrint(
