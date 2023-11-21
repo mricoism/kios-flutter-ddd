@@ -23,10 +23,10 @@ class MyApp extends StatelessWidget {
       statusBarColor: Colors.black,
       statusBarBrightness: Brightness.light,
     ));
-    return const MaterialApp(
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: ProductWrapperPage(),
-      // home: FlutterSplashScreen.scale(childWidget: Image.asset('assets/kios_miring_putih.png'), nextScreen: ProductWrapperPage(), backgroundColor: Colors.white,),
+      // home: ProductWrapperPage(),
+      home: FlutterSplashScreen.scale(childWidget: Image.asset('assets/kios_miring_putih.png'), nextScreen: ProductWrapperPage(), backgroundColor: Colors.white,),
       // onGenerateRoute: (RouteSettings settings) {
       //   final argument = settings.arguments;
       //   switch (settings.name) {
