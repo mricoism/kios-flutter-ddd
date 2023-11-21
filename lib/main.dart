@@ -1,3 +1,4 @@
+import 'package:another_flutter_splash_screen/another_flutter_splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:injectable/injectable.dart';
@@ -25,6 +26,7 @@ class MyApp extends StatelessWidget {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
       home: ProductWrapperPage(),
+      // home: FlutterSplashScreen.scale(childWidget: Image.asset('assets/kios_miring_putih.png'), nextScreen: ProductWrapperPage(), backgroundColor: Colors.white,),
       // onGenerateRoute: (RouteSettings settings) {
       //   final argument = settings.arguments;
       //   switch (settings.name) {

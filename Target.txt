@@ -14,4 +14,12 @@
 
 https://stackoverflow.com/questions/21826342/how-do-i-combine-two-lists-in-dart
 https://stackoverflow.com/questions/59769939/how-to-handle-timeout-error-with-dio-in-flutter
+https://stackoverflow.com/questions/71351351/flutter-app-crashes-for-ios-build-on-startup
+I use this one | https://stackoverflow.com/a/76181276
 
+
+
+
+============! IMPORTANT !=================
+default bundle identifier :
+com.example.kios 
